@@ -1,0 +1,1745 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Stylish API",
+        "contact": {
+            "email": "mahmoudnada5050@gmail.com"
+        },
+        "version": "2.0.0"
+    },
+    "basePath": "/api",
+    "paths": {
+        "/about-us": {
+            "get": {
+                "tags": [
+                    "about"
+                ],
+                "summary": "Get about-us data",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/addresses": {
+            "get": {
+                "tags": [
+                    "addresses"
+                ],
+                "summary": "Get All addresses without Pagination and for Pagination send parametr paginate = 1",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "get all data without Pagination make it = 0 and  for paginated data make it = 1",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/addresses/{address}": {
+            "get": {
+                "tags": [
+                    "addresses"
+                ],
+                "summary": "Get single Category",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "register",
+                "parameters": [
+                    {
+                        "name": "f_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mahmoud"
+                    },
+                    {
+                        "name": "l_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mohamed"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "01208971865"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mahmoudnada5050@gmail.com"
+                    },
+                    {
+                        "name": "device_token",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "device_token"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "123456"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mahmoudnada5050@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "123456"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "logout currently logged in user",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/auth/refresh": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "refreshes expired token",
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/auth/reset-password": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "reset password",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mahmoudnada5050@gmail.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/auth/check-code": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "check-code",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/contact-us": {
+            "post": {
+                "tags": [
+                    "contact-us"
+                ],
+                "summary": "Send contact Message",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "message",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Model"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/sliders": {
+            "get": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "Get All Slider With pagination 5 per Page",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/last-products": {
+            "get": {
+                "tags": [
+                    "home"
+                ],
+                "summary": "Get Last Products",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/tips": {
+            "get": {
+                "tags": [
+                    "tips"
+                ],
+                "summary": "Get all tips paginate 5 per page",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/setting": {
+            "get": {
+                "tags": [
+                    "setting"
+                ],
+                "summary": "Get settings of site",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/me": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get the current logged in user",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/update": {
+            "post": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "update My Account",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "f_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mahmoud"
+                    },
+                    {
+                        "name": "l_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mohamed"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "01208971865"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "mahmoudnada5050@gmail.com"
+                    },
+                    {
+                        "name": "photo",
+                        "in": "formData",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/update-password": {
+            "post": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "update My Password",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "current_password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Model"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/update-device-token": {
+            "post": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "update My device token",
+                "parameters": [
+                    {
+                        "name": "device_token",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Model"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/favorite/{product}": {
+            "post": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get single product",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/my-favorites": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get my favorites Products",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/my-orders": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get my orders Product",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/add-order/{product}": {
+            "post": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "send new order",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "size",
+                        "in": "formData",
+                        "description": "\n                [1=> \u0635\u063a\u064a\u0631],\n                [2=> \u0645\u062a\u0648\u0633\u0637],\n                [3=> \u0644\u0627\u0631\u062c],\n                [4=> \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n                [5=> 2 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n                [6=>3 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c]",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "color_code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "color_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "test_date",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/my-orders/{order}": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get single order",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/notifications": {
+            "get": {
+                "tags": [
+                    "notifications"
+                ],
+                "summary": "Get all tips notifications paginate 5 per page",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/notifications/{id}": {
+            "get": {
+                "tags": [
+                    "notifications"
+                ],
+                "summary": "read notification",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/read-all-notifications": {
+            "get": {
+                "tags": [
+                    "notifications"
+                ],
+                "summary": "read-all-notifications",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/my-utilizes": {
+            "get": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get my Utilizes",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/account/update-password-by-code": {
+            "post": {
+                "tags": [
+                    "account"
+                ],
+                "summary": "update My Password by code",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Model"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "store"
+                ],
+                "summary": "Get All categories without Pagination and for Pagination send parametr paginate = 1",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "get all data without Pagination make it = 0 and  for paginated data make it = 1",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/categories/{category}": {
+            "get": {
+                "tags": [
+                    "store"
+                ],
+                "summary": "Get single Category",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "store"
+                ],
+                "summary": "Get All products With pagination 5 per Page",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/products/{product}": {
+            "get": {
+                "tags": [
+                    "store"
+                ],
+                "summary": "Get single product",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/product-search": {
+            "get": {
+                "tags": [
+                    "store"
+                ],
+                "summary": "Search in products",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "color_code",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "address_id",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "\n    [1=> \u0635\u063a\u064a\u0631],\n    [2=> \u0645\u062a\u0648\u0633\u0637],\n    [3=> \u0644\u0627\u0631\u062c],\n    [4=> \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [5=> 2 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [6=>3 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c]",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "price_from",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "price_to",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/utilizes": {
+            "get": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "Get all utilizes with paginated 5 per page",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/utilizes/add": {
+            "post": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "add new utilize",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "size",
+                        "in": "formData",
+                        "description": "\n    [1=> \u0635\u063a\u064a\u0631],\n    [2=> \u0645\u062a\u0648\u0633\u0637],\n    [3=> \u0644\u0627\u0631\u062c],\n    [4=> \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [5=> 2 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [6=>3 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c]",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "color_code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "color_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "\n    [1=> \u0633\u0628\u0626],\n    [2=> \u062c\u064a\u062f],\n    [3=>\u0645\u0645\u062a\u0627\u0632]",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "lng",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "notes",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "main_photo",
+                        "in": "formData",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "sub_photos[]",
+                        "in": "formData",
+                        "description": "Array of Files",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/utilizes/update/{utilize}": {
+            "post": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "add new utilize",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "utilize",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "size",
+                        "in": "formData",
+                        "description": "\n    [1=> \u0635\u063a\u064a\u0631],\n    [2=> \u0645\u062a\u0648\u0633\u0637],\n    [3=> \u0644\u0627\u0631\u062c],\n    [4=> \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [5=> 2 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [6=>3 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c]",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "color_code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "color_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "\n    [1=> \u0633\u0628\u0626],\n    [2=> \u062c\u064a\u062f],\n    [3=>\u0645\u0645\u062a\u0627\u0632]",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "lng",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "notes",
+                        "in": "formData",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "main_photo",
+                        "in": "formData",
+                        "type": "file"
+                    },
+                    {
+                        "name": "sub_photos[]",
+                        "in": "formData",
+                        "description": "Array of Files",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/utilize-search": {
+            "get": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "Search in utilizes",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "color_code",
+                        "in": "query",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "address_id",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "\n    [1=> \u0635\u063a\u064a\u0631],\n    [2=> \u0645\u062a\u0648\u0633\u0637],\n    [3=> \u0644\u0627\u0631\u062c],\n    [4=> \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [5=> 2 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c],\n    [6=>3 \u0627\u0643\u0633 \u0644\u0627\u0631\u062c]",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "price_from",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "price_to",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "\n    [1=> \u0633\u0628\u0626],\n    [2=> \u062c\u064a\u062f],\n    [3=>\u0645\u0645\u062a\u0627\u0632]",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/utilizes/{utilize}": {
+            "get": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "Get single utilize",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "utilize",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/utilizes/delete/{utilize}": {
+            "delete": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "delete utilize",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "utilize",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "text"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/user/{user}/utilizes": {
+            "get": {
+                "tags": [
+                    "utilizes"
+                ],
+                "summary": "get all user utilizes paginated",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Langouge Code",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "en"
+                    },
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "text"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "jwt": {
+            "type": "apiKey",
+            "description": "Value: Bearer \\<token\\><br><br>",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+[15-Oct-2019 19:14:40 UTC] PHP Fatal error:  Uncaught TypeError: Return value of App\Local::locale() must be of the type string, null returned in /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php:718
+Stack trace:
+#0 /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php(779): App\Local->locale()
+#1 /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php(215): App\Local->getAttributeAndLocale('code')
+#2 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1546): App\Local->getAttribute('code')
+#3 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/Arr.php(148): Illuminate\Database\Eloquent\Model->offsetExists('code')
+#4 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/helpers.php(524): Illuminate\Support\Arr::exists(Object(App\Local), 'code')
+#5 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/Arr.php(387):  in /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php on line 718
+[15-Oct-2019 19:15:32 UTC] PHP Fatal error:  Uncaught TypeError: Return value of App\Local::locale() must be of the type string, null returned in /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php:718
+Stack trace:
+#0 /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php(779): App\Local->locale()
+#1 /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php(215): App\Local->getAttributeAndLocale('code')
+#2 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1546): App\Local->getAttribute('code')
+#3 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/Arr.php(148): Illuminate\Database\Eloquent\Model->offsetExists('code')
+#4 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/helpers.php(524): Illuminate\Support\Arr::exists(Object(App\Local), 'code')
+#5 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/Arr.php(387):  in /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php on line 718
+[15-Oct-2019 19:17:05 UTC] PHP Fatal error:  Uncaught TypeError: Return value of App\Local::locale() must be of the type string, null returned in /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php:718
+Stack trace:
+#0 /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php(779): App\Local->locale()
+#1 /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php(215): App\Local->getAttributeAndLocale('code')
+#2 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1546): App\Local->getAttribute('code')
+#3 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/Arr.php(148): Illuminate\Database\Eloquent\Model->offsetExists('code')
+#4 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/helpers.php(524): Illuminate\Support\Arr::exists(Object(App\Local), 'code')
+#5 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Support/Arr.php(387):  in /home/styliiish/public_html/vendor/dimsav/laravel-translatable/src/Translatable/Translatable.php on line 718
+[16-Nov-2019 21:33:24 UTC] PHP Warning:  include(/home/styliiish/public_html/vendor/composer/../../app/Http/Kernel.php): failed to open stream: No such file or directory in /home/styliiish/public_html/vendor/composer/ClassLoader.php on line 444
+[16-Nov-2019 21:33:24 UTC] PHP Warning:  include(/home/styliiish/public_html/vendor/composer/../../app/Http/Kernel.php): failed to open stream: No such file or directory in /home/styliiish/public_html/vendor/composer/ClassLoader.php on line 444
+[16-Nov-2019 21:33:24 UTC] PHP Warning:  include(): Failed opening '/home/styliiish/public_html/vendor/composer/../../app/Http/Kernel.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/styliiish/public_html/vendor/composer/ClassLoader.php on line 444
+[16-Nov-2019 21:33:24 UTC] PHP Fatal error:  Uncaught ReflectionException: Class App\Http\Kernel does not exist in /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('App\\Http\\Kernel')
+#1 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('App\\Http\\Kernel')
+#2 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(265): Illuminate\Container\Container->resolve('App\\Http\\Kernel', Array, false)
+#3 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(785): Illuminate\Container\Container->Illuminate\Container\{closure}(Object(Illuminate\Foundation\Application), Array)
+#4 /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build(Objec in /home/styliiish/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
